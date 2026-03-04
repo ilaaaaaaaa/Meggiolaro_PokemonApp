@@ -5,14 +5,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
+    // Logging base delle richieste HTTP (utile per debug)
     private val logging = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BASIC
+        level = HttpLoggingInterceptor.Level.NONE
     }
 
+    // OkHttpClient con logging
     private val client = OkHttpClient.Builder()
         .addInterceptor(logging)
         .build()
 
+    // Retrofit configurato per chiamare l'API dei Pokemon
     val api: PokemonApiService by lazy {
         Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")
