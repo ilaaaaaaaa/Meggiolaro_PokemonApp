@@ -20,6 +20,7 @@ fun main() {
                 val types = body.types.joinToString(",") { it.type.name }
 
                 // Inserisco i dati nel database
+                println("Inserisco Pokemon nel database...")
                 DatabaseManager.insertPokemon(
                     body.id,
                     body.name,
@@ -27,6 +28,7 @@ fun main() {
                     body.weight,
                     types
                 )
+                println("Pokemon inserito!")
 
                 // Rileggo dal database per avere lo stesso formato dei dati
                 pokemon = DatabaseManager.getPokemonByName(name)
